@@ -203,6 +203,21 @@ The software should encourage exploration rather than exact reproduction.
 - Synthesizer personality is preserved
 - Extensible architecture
 - Open research platform
+- Spec-driven development
+
+## Development Workflow
+
+ToneSeed is being developed with an AI-assisted, spec-driven workflow.
+
+The project keeps product context, technical specs, architectural decisions, and implementation backlog inside the repository so changes remain explicit, reviewable, and traceable.
+
+Key documents:
+
+- [AI Development Workflow](docs/AI_DEVELOPMENT_WORKFLOW.md)
+- [microKORG Mk1 MVP Spec](specs/0001-microkorg-mk1-mvp/spec.md)
+- [Hardware Setup](docs/HARDWARE_SETUP.md)
+- [microKORG Mk1 Driver](docs/MICROKORG_MK1_DRIVER.md)
+- [Backlog](BACKLOG.md)
 
 ## Possible Architecture
 
