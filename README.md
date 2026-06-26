@@ -261,6 +261,7 @@ Key documents:
 - [AI Development Workflow](docs/AI_DEVELOPMENT_WORKFLOW.md)
 - [Virtual Synth MVP Spec](specs/0002-virtual-synth-mvp/spec.md)
 - [ADR 0002: Virtual Synth Runtime For The MVP](docs/adr/0002-virtual-synth-runtime.md)
+- [Architecture Open Decisions](docs/architecture/open-decisions.md)
 - [microKORG Mk1 Hardware Target Spec](specs/0001-microkorg-mk1-mvp/spec.md)
 - [Hardware Setup](docs/HARDWARE_SETUP.md)
 - [microKORG Mk1 Driver](docs/MICROKORG_MK1_DRIVER.md)
