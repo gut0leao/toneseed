@@ -1,6 +1,6 @@
 # ToneSeed MVP: microKORG Mk1
 
-> Architectural update: this document is preserved as the future hardware MVP / hardware target plan for the microKORG Mk1. The first validatable prototype should now be the Virtual Synth MVP described in `specs/0002-virtual-synth-mvp/spec.md`, so ToneSeed can validate analysis, Tone IR, normalized patch mapping, synth driver control, render/capture, and comparison before depending on physical hardware, SysEx, and external audio capture.
+> Architectural update: this document is preserved as the future hardware MVP / hardware target plan for the microKORG Mk1. The first validatable prototype should now be the Virtual Synth MVP described in `specs/0002-virtual-synth-mvp/spec.md`, so ToneSeed can validate analysis, Tone IR, normalized patch mapping, synth driver translation, synth runtime execution/capture, and comparison before depending on physical hardware, SysEx, and external audio capture.
 
 ## Objetivo
 

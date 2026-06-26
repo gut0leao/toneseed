@@ -151,7 +151,7 @@ toneseed capture --note C3 --duration 2 --output captures/c3.wav
 - Do not add real hardware support before validating the minimum cycle with a controllable virtual synth.
 - Nao introduzir machine learning antes de existir captura e comparacao de features.
 - Nao criar interface grafica antes de existir CLI funcional.
-- Preserve the separation between audio analysis, Tone IR, normalized patches, and synth-specific drivers.
+- Preserve the separation between audio analysis, Tone IR, normalized patches, synth-specific drivers, and synth runtimes.
 - Nao misturar analise de audio com detalhes de SysEx, MIDI CC, plugin hosting, or synth automation.
 - Nao sobrescrever patches do microKORG sem uma rotina de backup documentada.
 

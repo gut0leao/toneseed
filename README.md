@@ -80,9 +80,13 @@ normalized patch
       ↓
 Virtual Synth Driver
       ↓
+Synth Runtime
+      ↓
+external plugin host
+      ↓
 MIDI / automation
       ↓
-render / capture
+audio routing capture
       ↓
 comparison
 ```
@@ -159,8 +163,12 @@ Each synthesizer remains faithful to its own sonic identity.
 The common driver boundary should preserve these layers:
 
 ```text
-Audio Analysis -> Tone IR -> Normalized Patch -> SynthDriver -> Target Synth
+Audio Analysis -> Tone IR -> Normalized Patch -> SynthDriver -> SynthRuntime -> Target Synth
 ```
+
+`SynthDriver` translates a `NormalizedPatch` into synth-specific parameters. `SynthRuntime` executes the synth, applies parameters, sends MIDI, captures or renders audio, and returns the generated WAV path.
+
+For the initial Virtual Synth MVP, Carla is the first candidate runtime. It should act as an external plugin host for Surge XT or another compatible plugin. ToneSeed should capture the host audio output through routing such as JACK, PipeWire, ALSA, or an equivalent mechanism rather than assuming Carla directly returns a WAV through an API.
 
 ### 4. Optimization Loop
 
@@ -252,6 +260,7 @@ Key documents:
 
 - [AI Development Workflow](docs/AI_DEVELOPMENT_WORKFLOW.md)
 - [Virtual Synth MVP Spec](specs/0002-virtual-synth-mvp/spec.md)
+- [ADR 0002: Virtual Synth Runtime For The MVP](docs/adr/0002-virtual-synth-runtime.md)
 - [microKORG Mk1 Hardware Target Spec](specs/0001-microkorg-mk1-mvp/spec.md)
 - [Hardware Setup](docs/HARDWARE_SETUP.md)
 - [microKORG Mk1 Driver](docs/MICROKORG_MK1_DRIVER.md)
@@ -274,6 +283,10 @@ tone-seed/
         Surge XT
         microKORG Mk1
         Generic MIDI
+
+    runtimes/
+        SynthRuntime interface
+        Carla external host
 
     optimization/
         Genetic algorithms

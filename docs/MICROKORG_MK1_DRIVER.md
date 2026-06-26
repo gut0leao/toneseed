@@ -1,6 +1,6 @@
 # microKORG Mk1 Driver
 
-> Architectural update: this document describes a future hardware target driver. The first validatable ToneSeed prototype should use the Virtual Synth MVP and a common `SynthDriver` abstraction before adding microKORG-specific MIDI/SysEx behavior.
+> Architectural update: this document describes a future hardware target driver. The first validatable ToneSeed prototype should use the Virtual Synth MVP plus separate `SynthDriver` and `SynthRuntime` abstractions before adding microKORG-specific MIDI/SysEx behavior.
 
 ## Objetivo
 

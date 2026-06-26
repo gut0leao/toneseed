@@ -6,10 +6,12 @@ Backlog inicial orientado por specs.
 
 - [x] Create `specs/0002-virtual-synth-mvp/spec.md`.
 - [ ] Define the `SynthDriver` contract.
+- [ ] Define the `SynthRuntime` contract.
 - [ ] Define the Tone IR -> normalized patch mapping.
 - [ ] Criar esqueleto Python do pacote `toneseed`.
 - [ ] Implementar conversao de notas musicais para numeros MIDI.
 - [ ] Implement an initial virtual synth driver.
+- [ ] Document the Carla runtime setup path for the MVP.
 
 ## Next
 
@@ -17,7 +19,7 @@ Backlog inicial orientado por specs.
 - [ ] Implementar `toneseed analyze`.
 - [ ] Criar exemplo minimo de audio para testes automatizados.
 - [ ] Test note MIDI/control delivery to the virtual synth.
-- [ ] Define the render/capture strategy for generated audio.
+- [ ] Define routed audio capture for the Carla-hosted synth output.
 - [ ] Create a simple comparison between target audio and generated audio.
 
 ## Later
