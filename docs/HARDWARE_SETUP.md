@@ -1,5 +1,7 @@
 # Hardware Setup
 
+> Architectural update: this document is for the later microKORG hardware target. The first validatable ToneSeed prototype should use the Virtual Synth MVP before depending on physical MIDI/audio wiring and external capture.
+
 ## Objetivo
 
 Documentar a configuracao fisica inicial para desenvolver e testar o ToneSeed com o Korg microKORG Mk1 e a interface M-Audio Fast Track C400.
@@ -53,7 +55,7 @@ microKORG Output R
 Fast Track C400 Input 2
 ```
 
-Para o MVP, mono e suficiente e simplifica a analise.
+Para o MVP de hardware do microKORG, mono e suficiente e simplifica a analise.
 
 ## Configuracao Inicial Recomendada
 
@@ -79,7 +81,7 @@ Antes de executar qualquer automacao:
 
 ## Teste Automatizado Basico
 
-O primeiro teste do ToneSeed deve apenas enviar uma nota MIDI e capturar audio.
+O primeiro teste de hardware do ToneSeed deve apenas enviar uma nota MIDI e capturar audio.
 
 ```text
 toneseed play-note --note C3 --velocity 100 --duration 2

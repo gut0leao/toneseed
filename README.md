@@ -2,9 +2,9 @@
 
 > **Plant a sound. Grow a patch.**
 
-ToneSeed is an AI-assisted sound design platform that transforms any audio recording into a synthesizer patch for real hardware.
+ToneSeed is an AI-assisted sound design platform that transforms any audio recording into a synthesizer patch for real or virtual synthesizers.
 
-Unlike samplers or SoundFonts, ToneSeed does **not** attempt to reproduce the original sound perfectly. Instead, it analyzes the sonic characteristics of a recording and generates a patch that captures its essence using the synthesis capabilities of a connected hardware synthesizer.
+Unlike samplers or SoundFonts, ToneSeed does **not** attempt to reproduce the original sound perfectly. Instead, it analyzes the sonic characteristics of a recording and generates a patch that captures its essence using the synthesis capabilities of a chosen synth target.
 
 The result is not a clone.
 
@@ -48,7 +48,7 @@ AI Optimization
       ↓
 Synthesizer Parameter Mapping
       ↓
-Real Analog Hardware
+Real Or Virtual Synthesizer
       ↓
 New Sound
 ```
@@ -57,15 +57,46 @@ The destination synthesizer is **not** merely a playback device.
 
 It is an active participant in the creative process.
 
+## MVP Strategy
+
+ToneSeed remains hardware-capable by design, but the initial prototype is **virtual-first**.
+
+The first validatable MVP should reduce dependency on physical hardware, MIDI cables, audio interfaces, SysEx safety, and external audio capture. It should prove the minimum ToneSeed loop with a controllable virtual synthesizer before moving to hardware-specific risk.
+
+The initial target is a **Virtual Synth MVP** using a softsynth target. The suggested first target for documentation is [Surge XT](https://surge-synthesizer.github.io/), because it is free, open source, cross-platform, relatively complete, and suitable as a general-purpose synthesizer.
+
+The microKORG Mk1 remains an important hardware target, but it is now treated as a later hardware MVP rather than the first technical risk.
+
+The virtual-first pipeline is:
+
+```text
+target audio
+      ↓
+analysis
+      ↓
+Tone IR
+      ↓
+normalized patch
+      ↓
+Virtual Synth Driver
+      ↓
+MIDI / automation
+      ↓
+render / capture
+      ↓
+comparison
+```
+
 ## Project Goals
 
 The project aims to create a generic framework capable of translating sonic characteristics into synthesizer parameters.
 
-Initially the focus will be hardware synthesizers connected through MIDI.
+Initially the focus is a virtual synthesizer that can be controlled inside the development environment.
 
 Future versions may support:
 
-- Software synthesizers
+- Hardware synthesizers connected through MIDI
+- Additional software synthesizers
 - Eurorack modular systems
 - CV/Gate interfaces
 - Vintage synthesizers via SysEx
@@ -96,7 +127,7 @@ The analysis stage should remain independent from any synthesizer.
 
 Create an intermediate representation (IR) describing the sound.
 
-This representation should be hardware independent.
+This representation should be synth-target independent.
 
 ```text
 Audio
@@ -108,22 +139,28 @@ The IR becomes the bridge between analysis and synthesis.
 
 ### 3. Synth Drivers
 
-Each supported synthesizer implements a driver capable of translating the Tone IR into its own parameter space.
+Each supported synthesizer implements a driver capable of translating a normalized patch into its own parameter space.
 
 Example:
 
 ```text
-Tone IR
+Normalized Patch
       │
+      ├── Surge XT
+      ├── microKORG Mk1
       ├── Roland Juno
       ├── Minimoog
       ├── Prophet
-      ├── Behringer Model D
-      ├── DeepMind
       └── ...
 ```
 
 Each synthesizer remains faithful to its own sonic identity.
+
+The common driver boundary should preserve these layers:
+
+```text
+Audio Analysis -> Tone IR -> Normalized Patch -> SynthDriver -> Target Synth
+```
 
 ### 4. Optimization Loop
 
@@ -134,7 +171,7 @@ Generate Patch
 
 ↓
 
-Send MIDI / SysEx
+Send MIDI / Automation
 
 ↓
 
@@ -142,7 +179,7 @@ Play Note
 
 ↓
 
-Capture Audio
+Render / Capture Audio
 
 ↓
 
@@ -198,7 +235,7 @@ The software should encourage exploration rather than exact reproduction.
 ## Design Principles
 
 - Creativity before imitation
-- Hardware-first
+- Virtual-first validation, hardware-capable architecture
 - Non-destructive workflow
 - Synthesizer personality is preserved
 - Extensible architecture
@@ -214,7 +251,8 @@ The project keeps product context, technical specs, architectural decisions, and
 Key documents:
 
 - [AI Development Workflow](docs/AI_DEVELOPMENT_WORKFLOW.md)
-- [microKORG Mk1 MVP Spec](specs/0001-microkorg-mk1-mvp/spec.md)
+- [Virtual Synth MVP Spec](specs/0002-virtual-synth-mvp/spec.md)
+- [microKORG Mk1 Hardware Target Spec](specs/0001-microkorg-mk1-mvp/spec.md)
 - [Hardware Setup](docs/HARDWARE_SETUP.md)
 - [microKORG Mk1 Driver](docs/MICROKORG_MK1_DRIVER.md)
 - [Backlog](BACKLOG.md)
@@ -232,10 +270,9 @@ tone-seed/
         Tone intermediate representation
 
     drivers/
-        Juno
-        Minimoog
-        Prophet
-        DeepMind
+        SynthDriver interface
+        Surge XT
+        microKORG Mk1
         Generic MIDI
 
     optimization/

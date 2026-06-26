@@ -4,23 +4,29 @@ Backlog inicial orientado por specs.
 
 ## Now
 
-- [ ] Resolver perguntas abertas da `specs/0001-microkorg-mk1-mvp/spec.md`.
+- [x] Create `specs/0002-virtual-synth-mvp/spec.md`.
+- [ ] Define the `SynthDriver` contract.
+- [ ] Define the Tone IR -> normalized patch mapping.
 - [ ] Criar esqueleto Python do pacote `toneseed`.
 - [ ] Implementar conversao de notas musicais para numeros MIDI.
-- [ ] Implementar comando `toneseed devices`.
+- [ ] Implement an initial virtual synth driver.
 
 ## Next
 
-- [ ] Implementar `toneseed play-note`.
 - [ ] Implementar Tone IR serializavel.
 - [ ] Implementar `toneseed analyze`.
 - [ ] Criar exemplo minimo de audio para testes automatizados.
-- [ ] Implementar captura WAV.
+- [ ] Test note MIDI/control delivery to the virtual synth.
+- [ ] Define the render/capture strategy for generated audio.
+- [ ] Create a simple comparison between target audio and generated audio.
 
 ## Later
 
+- [ ] Resolver perguntas abertas da `specs/0001-microkorg-mk1-mvp/spec.md`.
+- [ ] Implementar comando `toneseed devices` para hardware real.
+- [ ] Implementar `toneseed play-note` para hardware real.
+- [ ] Implementar captura WAV por interface de audio externa.
 - [ ] Documentar SysEx do microKORG Mk1 a partir de dumps reais.
 - [ ] Implementar driver minimo do microKORG Mk1.
-- [ ] Implementar comparacao de features alvo vs captura.
 - [ ] Implementar primeiro loop de otimizacao heuristica.
 - [ ] Criar UI depois da CLI estar funcional.

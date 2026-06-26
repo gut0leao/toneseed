@@ -50,6 +50,8 @@ specs/
         feature-spec.md
     0001-microkorg-mk1-mvp/
         spec.md
+    0002-virtual-synth-mvp/
+        spec.md
 ```
 
 ## Como Pedir Trabalho Ao Codex
@@ -86,7 +88,7 @@ Uma tarefa so deve ser considerada pronta quando tiver:
 
 Descreve o comportamento desejado do ponto de vista do usuario.
 
-Exemplo: "Gerar um patch inspirado em um WAV e tocar no microKORG".
+Example: "Generate a patch inspired by a WAV and render it through a controllable virtual synth."
 
 ### Spec Tecnica
 
@@ -128,7 +130,15 @@ pytest
 python -m toneseed --help
 ```
 
-Quando houver MIDI e audio, a validacao com hardware devera ser manual e registrada:
+When the virtual synth path exists, validation should first prove the minimum loop without real hardware:
+
+```text
+toneseed synths
+toneseed play-note --synth surge-xt --note C3 --duration 1
+toneseed grow examples/audio/target.wav --synth surge-xt
+```
+
+When hardware support exists later, validation with hardware should be manual and recorded:
 
 ```text
 toneseed devices
@@ -138,10 +148,11 @@ toneseed capture --note C3 --duration 2 --output captures/c3.wav
 
 ## Regras Para Evolucao
 
-- Nao adicionar suporte a outro sintetizador antes do microKORG Mk1 ter um driver minimo.
+- Do not add real hardware support before validating the minimum cycle with a controllable virtual synth.
 - Nao introduzir machine learning antes de existir captura e comparacao de features.
 - Nao criar interface grafica antes de existir CLI funcional.
-- Nao misturar analise de audio com detalhes de SysEx.
+- Preserve the separation between audio analysis, Tone IR, normalized patches, and synth-specific drivers.
+- Nao misturar analise de audio com detalhes de SysEx, MIDI CC, plugin hosting, or synth automation.
 - Nao sobrescrever patches do microKORG sem uma rotina de backup documentada.
 
 ## Uso De Um Unico Agente

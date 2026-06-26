@@ -1,35 +1,43 @@
-# Spec 0001: microKORG Mk1 MVP
+# Spec 0001: microKORG Mk1 Hardware Target Spec
 
 ## Status
 
-Ready
+Deferred
+
+## Architectural Update
+
+This spec is preserved as the future hardware target specification for the Korg microKORG Mk1.
+
+The first validatable ToneSeed prototype is now the [Virtual Synth MVP](../0002-virtual-synth-mvp/spec.md). That MVP should validate the core loop with a controllable softsynth target before ToneSeed takes on physical hardware, MIDI cabling, audio interface capture, SysEx safety, and external latency.
+
+The useful microKORG technical content below should remain available for the later hardware MVP.
 
 ## Context
 
-ToneSeed deve comecar com um alvo concreto: Korg microKORG Mk1 conectado a uma interface M-Audio Fast Track C400.
+ToneSeed still treats the Korg microKORG Mk1 connected to an M-Audio Fast Track C400 as an important concrete hardware target.
 
-O projeto precisa provar o ciclo minimo:
+After the virtual synth loop is validated, the hardware MVP should prove this cycle:
 
 ```text
 audio alvo -> analise -> Tone IR -> patch -> microKORG -> captura -> comparacao
 ```
 
-Este MVP deve ser pequeno, testavel e orientado por CLI.
+This hardware MVP should be small, testable, and CLI-oriented.
 
 ## Goal
 
-Criar a primeira versao funcional do ToneSeed capaz de:
+Create the first hardware-backed version of ToneSeed capable of:
 
 - analisar um arquivo WAV
 - representar o timbre em uma Tone IR simples
 - tocar notas MIDI no microKORG Mk1
 - capturar audio gerado pelo microKORG
-- preparar o caminho para envio de parametros via MIDI/SysEx
+- preparing the path for MIDI/SysEx parameter transmission
 
 ## Non-goals
 
 - Criar interface grafica.
-- Suportar outros sintetizadores.
+- Implementar suporte generico a varios sintetizadores.
 - Treinar modelo neural.
 - Reproduzir o audio alvo com fidelidade literal.
 - Implementar plugin VST/AU.

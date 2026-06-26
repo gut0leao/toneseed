@@ -1,8 +1,10 @@
 # microKORG Mk1 Driver
 
+> Architectural update: this document describes a future hardware target driver. The first validatable ToneSeed prototype should use the Virtual Synth MVP and a common `SynthDriver` abstraction before adding microKORG-specific MIDI/SysEx behavior.
+
 ## Objetivo
 
-Definir o escopo do primeiro driver de sintetizador do ToneSeed: Korg microKORG Mk1.
+Definir o escopo do driver de hardware para o Korg microKORG Mk1.
 
 O driver e responsavel por traduzir a Tone IR e parametros internos do ToneSeed para mensagens compreensiveis pelo microKORG Mk1.
 
@@ -66,7 +68,7 @@ O driver converte esses valores para o formato nativo do microKORG.
 
 ## Parametros Iniciais Candidatos
 
-O primeiro driver deve comecar com um subconjunto pequeno.
+O driver do microKORG deve comecar com um subconjunto pequeno.
 
 - voice mode
 - oscillator 1 waveform
